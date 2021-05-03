@@ -1,0 +1,98 @@
+openapi: "3.0.0"
+
+info:
+  title: Fullstack Challenge 20201209
+  description: CRUD Users
+  version: '0.1'
+  title: "Users"
+
+paths:
+  /login: 
+    post: 
+      summary: 'Login user'
+      description: 'Provide login form'
+      tags: 
+        - "Auth"
+      responses:
+        '200':
+          description: 'Ok. Log in'
+        '400':
+          description: 'Invalid password'
+        '404':
+          description: 'Not found user'
+
+  /register:
+    post:
+      summary: 'Register user'
+      description: 'Provide a registration form'
+      tags: 
+        - 'Auth'
+      responses:
+        '200':
+          description: 'Ok, user registrated'
+        '400':
+          description: 'Registration failed'
+          
+  /users:
+    get:
+      tags: 
+        - "Users"
+      description: "This GET will return all registered users"
+      responses:
+        '200':
+          description: 'Ok get all your users'
+        '500':
+          description: 'Server error'
+          
+    post:
+      tags: 
+        - "Users"
+      description: "This POST will create a new user on database"
+      responses:
+        '200': 
+          description: 'Ok user registered'
+        '400':
+          description: 'Registration failed'
+        '500':
+          description: 'Server error'
+          
+  '/users/{userid}':
+    parameters:
+      - schema:
+          type: integer
+          example: 123
+        name: userid
+        in: path
+        required: true
+        description: Unique id of user
+          
+    put:
+      tags: 
+        - "Users"
+      description: "This PUT will update a user on database"
+      responses:
+        '200': 
+          description: 'Ok user updated'
+        '404':
+          description: 'User not found'
+      
+    delete:
+      tags: 
+        - "Users"
+      description: "This DELETE will delete a user on database"
+      responses:
+        '200': 
+          description: 'Ok user deleted'
+        '404':
+          description: 'User not found'
+    
+    get:
+      tags: 
+        - "Users"
+      description: "This GET will give to you a especific user on database"
+      responses:
+        '200': 
+          description: 'Ok get you user'
+        '404':
+          description: 'User not found'
+          
