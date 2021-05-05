@@ -66,10 +66,10 @@ const UserSchema = new Schema({
         age: { type: Number }
     },
     phone: {
-        type: Number,
+        type: String,
         required: true
     },
-    cell: { type: Number },
+    cell: { type: String },
     picture: {
         type: Object,
         large: { type: String },

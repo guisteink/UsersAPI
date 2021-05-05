@@ -7,7 +7,7 @@ class UserController {
     async create(req, res) {
         const data = req.body
         const user = new UserSchema({
-            gender: _.get(data, 'gender')? _.get(data, 'gender'): 'N/A',
+            gender: _.get(data, 'gender') ? _.get(data, 'gender') : 'N/A',
             name: {
                 first: _.get(data, 'name.first'),
                 last: _.get(data, 'name.last')
@@ -67,7 +67,7 @@ class UserController {
             .findByIdAndUpdate(
                 { _id: req.params.id },
                 {
-                    gender: _.get(data, 'gender'),
+                    gender: _.get(data, 'gender') ? _.get(data, 'gender') : 'N/A',
                     name: {
                         first: _.get(data, 'name.first'),
                         last: _.get(data, 'name.last')
